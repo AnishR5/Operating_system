@@ -1,0 +1,82 @@
+#!/bin/bash
+
+sudo useradd  dac1
+sudo passwd dac1
+
+sudo useradd  dbda1
+sudo passwd dbda1
+
+sudo  useradd  ditiss1
+sudo passwd ditiss1
+
+sudo usermod -a -G sudo dac1
+sudo usermod -a -G sudo dbda1
+sudo usermod -a  -G sudo ditiss1
+
+su dac1
+sudo useradd  -g dac1 u11
+sudo passwd u11
+
+sudo useradd -g dac1 u21
+sudo passwd u21
+sudo useradd -g dac1 u31
+Sudo passwd u31
+
+
+exit
+
+su dbda1
+sudo useradd -g dbda1 u41
+sudo passwd u41
+
+sudo useradd -g dbda1 u51
+sudo passwd u51
+
+exit
+su ditiss1
+sudo useradd -g ditiss1 u61
+sudo passwd u61
+
+sudo useradd -g ditiss1 u71
+sudo passwd u71
+
+exit
+su u11
+echo "u11" >> u11.txt
+chmod o-rwx u11.txt
+exit
+
+su u21
+echo "u21" >> u21.txt
+chmod o-rwx u21.txt
+exit
+su u31
+echo "u31" >> u31.sh
+chmod o-rwx u31.txt
+exit
+su u41
+echo "u41" >> u41.sh
+chmod o-rwx u41.sh
+exit
+su u51
+echo "u51" >> u51.sh
+chmod o-rwx u51.sh
+exit
+su u61
+echo "u61" >> u61.sh
+chmod o-rwx u61.sh
+exit
+su u71
+echo "u71" >> u71.sh
+chmod o-rwx u71.sh
+exit
+
+sudo groupadd reading
+
+sudo usermod -a -G reading u11
+sudo usermod -a -G reading u31
+sudo usermod -a -G reading u51
+sudo usermod -a -G reading u71
+
+
+sudo chgrp reading u61.txt
